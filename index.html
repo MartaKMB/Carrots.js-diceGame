@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <title>gra w kości</title>
@@ -13,56 +14,73 @@
     </header>
 
     <main>
-        
+
         <div id="container_start">
 
-        <section class="log">
-           
-            <label class="give_name">
+            <section class="log">
+
+                <label class="give_name">
               Podaj imię:
                <input type="text" id="input_name">
             </label>
-            
-            <p>lub pozostań anonimowy, zagrasz jako 'Tajemniczy Gość'</p>
-            
-            <button id="btn_first_player">SPRAWDŻ KTO ROZPOCZNIE GRĘ</button>
 
-            <div class="first_player"> Grę rozpoczyna: <span id="first_player_name">__________</span></div>
+                <p>lub pozostań anonimowy, zagrasz jako 'Tajemniczy Gość'</p>
 
-        </section>
-        
-        <section class="start">
-           
-            <button id="btn_start">START GRY!</button>
-            
-        </section>
-        
-        <article class="game_rules">
-           
-            <h2>ZASADY GRY</h2>
-            
-            <ol>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id doloribus laboriosam magnam maiores animi perspiciatis explicabo repellat eum fugiat sit, enim in mollitia, unde, dolorum aperiam totam quisquam pariatur quam.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente saepe, reiciendis aut harum vel nam, est odit doloribus voluptatum repellat eveniet cumque officiis possimus voluptatem. Voluptatibus nesciunt, aliquam odit nam.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat voluptatem iste cupiditate perspiciatis excepturi velit, quia sed culpa, aperiam sunt quisquam laborum deleniti accusantium, provident est non consequuntur harum odit?</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, quod dolores, quos sunt corporis ducimus, illum rerum ea obcaecati repudiandae, natus inventore nostrum adipisci tempore. Illum voluptas consequatur iure recusandae.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio neque sequi vel earum dolorem totam veniam eveniet, dignissimos enim iste nostrum quam, odit molestiae sapiente nam nobis ab amet doloribus.</li>
-            </ol>
-            
-        </article>
-        
+                <button id="btn_first_player">SPRAWDŻ KTO ROZPOCZNIE GRĘ</button>
+
+                <div class="first_player"> Grę rozpoczyna: <span id="first_player_name">__________</span></div>
+
+            </section>
+
+            <section class="start">
+
+                <button id="btn_start">START GRY!</button>
+
+            </section>
+
+<!--
+            <article class="game_rules">
+
+                <h2>ZASADY GRY</h2>
+
+                <ol>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id doloribus laboriosam magnam maiores animi perspiciatis explicabo repellat eum fugiat sit, enim in mollitia, unde, dolorum aperiam totam quisquam pariatur quam.</li>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente saepe, reiciendis aut harum vel nam, est odit doloribus voluptatum repellat eveniet cumque officiis possimus voluptatem. Voluptatibus nesciunt, aliquam odit nam.</li>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat voluptatem iste cupiditate perspiciatis excepturi velit, quia sed culpa, aperiam sunt quisquam laborum deleniti accusantium, provident est non consequuntur harum odit?</li>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, quod dolores, quos sunt corporis ducimus, illum rerum ea obcaecati repudiandae, natus inventore nostrum adipisci tempore. Illum voluptas consequatur iure recusandae.</li>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio neque sequi vel earum dolorem totam veniam eveniet, dignissimos enim iste nostrum quam, odit molestiae sapiente nam nobis ab amet doloribus.</li>
+                </ol>
+
+            </article>
+-->
+
         </div>
-        
+
         <div id="container_game">
-           
-           <div>TUTAJ BEDZIE GRA</div>
-            
+
+            <div>runda: <span id="round"></span></div>
+
+            <button id="btn_throw">RZUCAM</button>
+
+            <div id="dice_1">?</div>
+            <div id="dice_2">?</div>
+            <div id="dice_3">?</div>
+
+            <div id="test"></div>
+
+            <button id="btn_bigger">KOLEJNA BĘDZIE WIĘKSZA</button>
+            <button id="btn_lower">KOLEJNA BĘDZIE MNIEJSZA</button>
+
+            <div>suma puktów <span id="game_user_name"></span> <span id="user_points">___</span></div>
+            <div>suma puktów komputera <span id="comp_points">___</span></div>
+            <div>zwycięzca: <span id="winner">___</span></div>
         </div>
-        
+
     </main>
-        
-    <footer> Marta &copy; 2017 </footer>
-    
+
+<!--    <footer> Marta &copy; 2017 </footer>-->
+
     <script src="js/script.js"></script>
 </body>
+
 </html>
