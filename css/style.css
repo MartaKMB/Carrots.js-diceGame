@@ -1,25 +1,3 @@
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
 
-html { font-size: 10px; }
-
-.invisible { display: none; }
-
-/* helpers */
-/* style */
-header { height: 30vh; background-color: darkgreen; }
-header h1 { text-align: center; font-size: 4rem; color: floralwhite; padding-top: 10%; margin-top: 0; }
-
-main { height: 60vh; }
-
-.log { padding: 2%; width: 100%; text-align: center; }
-.log .give_name, .log .first_player { display: block; width: 65%; margin-left: auto; margin-right: auto; margin-top: 2%; margin-bottom: 1%; text-align: center; font-size: 1.6rem; }
-.log .give_name input, .log .first_player input { vertical-align: middle; height: 2rem; }
-.log p { margin-bottom: 4%; }
-.log button { width: 30%; height: 3rem; font-size: 2rem; background-color: darkgreen; color: floralwhite; }
-
-.start { background-color: darkgreen; padding: 2%; text-align: center; }
-.start button { width: 50%; height: 4rem; font-size: 3rem; }
-
-footer { height: 10vh; }
 
 /*# sourceMappingURL=style.css.map */

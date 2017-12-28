@@ -55,6 +55,8 @@
 -->
 
         </div>
+        
+        <span>************************************************************************************************</span>
 
         <div id="container_game">
 
@@ -62,17 +64,36 @@
 
             <button id="btn_throw">RZUCAM</button>
 
-            <div id="dice_1">?</div>
-            <div id="dice_2">?</div>
-            <div id="dice_3">?</div>
+            <div>pierwszy rzut</div>
+            
+            <div id="dice_1_1">?</div>
+            <div id="dice_2_1">?</div>
+            <div id="dice_3_1">?</div>
+            
+            <div id="sum_a"></div>
+            
+            <div id="comp_msg"></div>
+            
+            <div>drugi rzut</div>
+            
+            <div id="dice_1_2">?</div>
+            <div id="dice_2_2">?</div>
+            <div id="dice_3_2">?</div>
+            
+            <div id="sum_b"></div>
 
             <div id="test"></div>
+            <br>
+            <form id="form_player_decision">
+                <input type="radio" name ="check" id="bigger" value ="bigger"> Suma oczek wyrzuconych w kolejnej rundzie będzie WIĘKSZA od tej
+                <br>
+                <input type ="radio" name ="check" id="lower" value ="lower"> Suma oczek wyrzuconych w kolejnej rundzie będzie MNIEJSZA od tej
+                <br>
+                <button id="btn_check">sprawdź</button>
+            </form>
 
-            <button id="btn_bigger">KOLEJNA BĘDZIE WIĘKSZA</button>
-            <button id="btn_lower">KOLEJNA BĘDZIE MNIEJSZA</button>
-
-            <div>suma puktów <span id="game_user_name"></span> <span id="user_points">___</span></div>
-            <div>suma puktów komputera <span id="comp_points">___</span></div>
+            <div>suma puktów <span id="game_user_name"></span> <span id="player_points">___</span></div>
+            <div>suma puktów komputera <span id="computer_points">___</span></div>
             <div>zwycięzca: <span id="winner">___</span></div>
         </div>
 
