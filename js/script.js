@@ -1,314 +1,320 @@
-(function startPage() {
+(function () {
 
-    const btn_first_player = document.querySelector('#btn_first_player');
-    const span_first_player = document.querySelector('#first_player_name');
+    function showStartPage() {
 
-    const start_view = document.querySelector('#container_start');
+        const btnFirstPlayer = document.querySelector('#btn_first_player');
+        const spanFirstPlayer = document.querySelector('#first_player_name');
 
-    btn_first_player.addEventListener('click', (e) => {
-        
-        let player_name = document.querySelector('#input_name').value;
+        const startView = document.querySelector('#container_start');
 
-        let draw_num = Math.round(Math.random());
+        btnFirstPlayer.addEventListener('click', (e) => {
 
-        if (player_name === '') {
-            player_name = 'Tajemniczy Gość';
-        }
+            let playerName = document.querySelector('#input_name').value;
 
-        if (draw_num === 0) {
-            span_first_player.innerHTML = player_name;
-        } else {
-            span_first_player.innerHTML = 'komputer';
-        }
-        
-        btn_first_player.disabled = true;
-        
-    });
+            let drawedNum = Math.round(Math.random());
 
-}());
-
-
-(function gamePage() {
-
-    const span_first_player = document.querySelector('#first_player_name');
-    const btn_start = document.querySelector('#btn_start');
-
-    let who_first = true; /* start: true - computer, false - user */
-
-    const span_round = document.querySelector('#round');
-    let counter = 1;
-
-    const div_sum_a = document.querySelector('#sum_a');
-    const div_sum_b = document.querySelector('#sum_b');
-
-    const span_player_points = document.querySelector('#player_points');
-    const span_computer_points = document.querySelector('#computer_points');
-    let computer_points = 0;
-    let player_points = 0;
-
-    const span_winner = document.querySelector('#winner');
-
-    /* first throw */
-    const div_dice_1_1 = document.querySelector('#dice_1_1');
-    const div_dice_2_1 = document.querySelector('#dice_2_1');
-    const div_dice_3_1 = document.querySelector('#dice_3_1');
-
-    /* second throw */
-    const div_dice_1_2 = document.querySelector('#dice_1_2');
-    const div_dice_2_2 = document.querySelector('#dice_2_2');
-    const div_dice_3_2 = document.querySelector('#dice_3_2');
-
-    const btn_bigger = document.querySelector('#bigger');
-    const btn_lower = document.querySelector('#lower');
-
-    const div_decision_msg = document.querySelector('#decision_msg')
-
-    const btn_next = document.querySelector('#next_round');
-
-    const dice_array = [div_dice_1_1, div_dice_2_1, div_dice_3_1, div_dice_1_2, div_dice_2_2, div_dice_3_2, div_sum_a, div_sum_b, div_decision_msg];
-
-
-    function clearGameBoard(array_to_clear) {
-        
-        for (let i = 0; i < array_to_clear.length; i++) {
-            array_to_clear[i].innerHTML = '';
-        }
-        
-    }
-
-    function winner() {
-        
-        const player_points = parseInt(span_player_points.innerHTML);
-        const computer_points = parseInt(span_computer_points.innerHTML);
-
-        clearGameBoard(dice_array);
-
-        btn_bigger.disabled = true;
-        btn_lower.disabled = true;
-        btn_next.disabled = true;
-
-        if (player_points > computer_points) {
-            span_winner.innerHTML = document.querySelector('#input_name').value + ' jesteś zwycięzcą!';
-        } else if (computer_points > player_points) {
-            span_winner.innerHTML = 'Tym razem komputer wygrał';
-        } else {
-            span_winner.innerHTML = 'Czyżby remis?';
-        }
-        
-    }
-
-    function randomNumber() {
-        
-        let random_nr = Math.floor((Math.random() * 6) + 1);
-        return random_nr;
-        
-    }
-
-    function randomDiceNumbers(round) {
-        
-        if (round == 1) {
-            div_dice_1_1.innerHTML = randomNumber();
-            div_dice_2_1.innerHTML = randomNumber();
-            div_dice_3_1.innerHTML = randomNumber();
-        } else if (round == 2) {
-            div_dice_1_2.innerHTML = randomNumber();
-            div_dice_2_2.innerHTML = randomNumber();
-            div_dice_3_2.innerHTML = randomNumber();
-        } else {
-            console.log('coś poszło nie tak - funkcja randomDiceNumbers');
-        }
-        
-    }
-
-    function sumDiceNumbers(a, b, c) {
-        return parseInt(a) + parseInt(b) + parseInt(c);
-    }
-
-    function computerRound() {
-
-        btn_bigger.disabled = false;
-        btn_lower.disabled = false;
-
-        randomDiceNumbers(1);
-
-        const sum_a = sumDiceNumbers(div_dice_1_1.innerHTML, div_dice_2_1.innerHTML, div_dice_3_1.innerHTML);
-
-        div_sum_a.innerHTML = 'pierwszy rzut suma: ' + sum_a;
-
-        who_first = false;
-
-    }
-
-    function biggerOrLower() {
-        
-        let decision = Math.floor((Math.random() * 2) + 1);
-        
-        if (decision === 1) {
-            return true;
-        } else {
-            return false;
-        }
-        
-    }
-
-    function points(player_name, flag_decision) {
-        /* flag_decision: false - next sum will be lower; true - next sum will be bigger */
-
-        const sum_a = sumDiceNumbers(div_dice_1_1.innerHTML, div_dice_2_1.innerHTML, div_dice_3_1.innerHTML);
-
-        randomDiceNumbers(2);
-
-        const sum_b = sumDiceNumbers(div_dice_1_2.innerHTML, div_dice_2_2.innerHTML, div_dice_3_2.innerHTML);
-        div_sum_b.innerHTML = 'drugi rzut suma: ' + sum_b;
-
-        if (player_name === 'COMPUTER') {
-
-            if (flag_decision === true) {
-                div_decision_msg.innerHTML = 'komputer obstawił, że suma oczek w kolejnym rzucie będzie WIĘKSZA';
-
-                if (sum_b > sum_a) {
-                    console.log('miał rację suma oczek z drugiego rzutu jest większa!');
-                    computer_points++;
-                    span_computer_points.innerHTML = computer_points;
-                } else if (sum_b < sum_a) {
-                    console.log('NIE miał racji suma oczek z drugiego rzutu jest mniejsza');
-                    player_points++;
-                    span_player_points.innerHTML = player_points;
-                } else {
-                    console.log('może sumy są takie same?');
-                }
-            } else if (flag_decision === false) {
-                div_decision_msg.innerHTML = 'komputer obstawił, że suma oczek w kolejnym rzucie będzie MNIEJSZA';
-
-                if (sum_b < sum_a) {
-                    console.log('miał rację suma oczek z drugiego rzutu jest mniejsza!');
-                    computer_points++;
-                    span_computer_points.innerHTML = computer_points;
-                } else if (sum_b > sum_a) {
-                    console.log('NIE miał racji suma oczek z drugiego rzutu jest większa');
-                    player_points++;
-                    span_player_points.innerHTML = player_points;
-                } else {
-                    console.log('może sumy są takie same?');
-                }
-            } else {
-                console.log('problem z podjęciem decyzji przez komputer | points');
+            if (playerName === '') {
+                playerName = 'Tajemniczy Gość';
             }
 
-        } else if (player_name === 'PLAYER') {
-
-            if (flag_decision === true) {
-                div_decision_msg.innerHTML = 'obstawiłeś/aś, że suma oczek w kolejnym rzucie będzie WIĘKSZA';
-
-                if (sum_b > sum_a) {
-                    console.log('miałeś/aś rację suma oczek z drugiego rzutu jest większa!');
-                    player_points++;
-                    span_player_points.innerHTML = player_points;
-                } else if (sum_b < sum_a) {
-                    console.log('NIE miałeś/aś racji suma oczek z drugiego rzutu jest mniejsza');
-                    computer_points++;
-                    span_computer_points.innerHTML = computer_points;
-                } else {
-                    console.log('może sumy są takie same?');
-                }
-            } else if (flag_decision === false) {
-                div_decision_msg.innerHTML = 'obstawiłeś/aś, że suma oczek w kolejnym rzucie będzie MNIEJSZA';
-
-                if (sum_b < sum_a) {
-                    console.log('miałeś/aś rację suma oczek z drugiego rzutu jest mniejsza!');
-                    player_points++;
-                    span_player_points.innerHTML = player_points;
-                } else if (sum_b > sum_a) {
-                    console.log('NIE miałeś/aś racji suma oczek z drugiego rzutu jest większa');
-                    computer_points++;
-                    span_computer_points.innerHTML = computer_points;
-                } else {
-                    console.log('może sumy są takie same?');
-                }
+            if (drawedNum === 0) {
+                spanFirstPlayer.innerHTML = playerName;
             } else {
-                console.log('problem z podjęciem decyzji przez gracza | function points');
+                spanFirstPlayer.innerHTML = 'komputer';
             }
 
-        } else {
-            console.log('problem z funkcją points');
+            btnFirstPlayer.disabled = true;
+
+        });
+    }
+
+    function showGamePage() {
+
+        const spanFirstPlayer = document.querySelector('#first_player_name');
+        const btnStart = document.querySelector('#btn_start');
+
+        let whoFirst = true; /* start: true - computer, false - user */
+
+        const spanRound = document.querySelector('#round');
+        let counter = 1;
+
+        const divSumA = document.querySelector('#sum_a');
+        const divSumB = document.querySelector('#sum_b');
+
+        const spanPlayerPoints = document.querySelector('#player_points');
+        const spanComputerPoints = document.querySelector('#computer_points');
+        let computerPoints = 0;
+        let playerPoints = 0;
+
+        const spanWinner = document.querySelector('#winner');
+
+        /* first throw */
+        const divDice1_1 = document.querySelector('#dice_1_1');
+        const divDice2_1 = document.querySelector('#dice_2_1');
+        const divDice3_1 = document.querySelector('#dice_3_1');
+
+        /* second throw */
+        const divDice1_2 = document.querySelector('#dice_1_2');
+        const divDice2_2 = document.querySelector('#dice_2_2');
+        const divDice3_2 = document.querySelector('#dice_3_2');
+
+        const btnBigger = document.querySelector('#bigger');
+        const btnLower = document.querySelector('#lower');
+
+        const divDecisionMsg = document.querySelector('#decision_msg')
+
+        const btnNext = document.querySelector('#next_round');
+
+        const diceArray = [divDice1_1, divDice2_1, divDice3_1, divDice1_2, divDice2_2, divDice3_2, divSumA, divSumB, divDecisionMsg];
+
+
+        function clearGameBoard(arrayToClear) {
+
+            arrayToClear.forEach(element => element.innerHTML = '');
+
         }
-        
-    }
 
-    function playerDecision(flag_decision) {
+        function showWinner() {
 
-        btn_bigger.disabled = true;
-        btn_lower.disabled = true;
+            const playerPoints = parseInt(spanPlayerPoints.innerHTML);
+            const computerPoints = parseInt(spanComputerPoints.innerHTML);
 
-        points('PLAYER', flag_decision);
-        
-    }
+            clearGameBoard(diceArray);
 
-    function playerDecisionBigger() {
-        playerDecision(true);
-    }
+            btnBigger.disabled = true;
+            btnLower.disabled = true;
+            btnNext.disabled = true;
 
-    function playerDecisionLower() {
-        playerDecision(false);
-    }
-
-    function playerRound() {
-
-        btn_bigger.disabled = true;
-        btn_lower.disabled = true;
-
-        randomDiceNumbers(1);
-
-        const sum_a = sumDiceNumbers(div_dice_1_1.innerHTML, div_dice_2_1.innerHTML, div_dice_3_1.innerHTML);
-
-        div_sum_a.innerHTML = 'pierwszy rzut suma: ' + sum_a;
-
-        const computerDecision = biggerOrLower();
-
-        points('COMPUTER', computerDecision);
-
-        who_first = true;
-    }
-
-    function nextRound() {
-        
-        if (counter >= 5) {
-            winner();
-        } else {
-            counter++;
-            span_round.innerHTML = counter;
-
-            clearGameBoard(dice_array);
-
-            if (who_first === true) {
-                computerRound();
+            if (playerPoints > computerPoints) {
+                spanWinner.innerHTML = document.querySelector('#input_name').value + ' jesteś zwycięzcą!';
+            } else if (computerPoints > playerPoints) {
+                spanWinner.innerHTML = 'Tym razem komputer wygrał';
             } else {
-                playerRound();
+                spanWinner.innerHTML = 'Czyżby remis?';
+            }
+
+        }
+
+        function generateRandomNumber() {
+
+            let randomNr = Math.floor((Math.random() * 6) + 1);
+            return randomNr;
+
+        }
+
+        function generateRandomDiceNumbers(round) {
+
+            try {
+                
+                if (round == 1) {
+                    
+                    divDice1_1.innerHTML = generateRandomNumber();
+                    divDice2_1.innerHTML = generateRandomNumber();
+                    divDice3_1.innerHTML = generateRandomNumber();
+                    
+                } else if (round == 2) {
+                    
+                    divDice1_2.innerHTML = generateRandomNumber();
+                    divDice2_2.innerHTML = generateRandomNumber();
+                    divDice3_2.innerHTML = generateRandomNumber();
+                    
+                } else {
+                    throw new Error('problem with generating random dice number');
+                }
+                
+            } catch (e) {
+                console.log(e.name + ' :' + e.message);
             }
         }
-        
+
+        function sumDiceNumbers(a, b, c) {
+            return parseInt(a) + parseInt(b) + parseInt(c);
+        }
+
+        function playComputerRound() {
+
+            btnBigger.disabled = false;
+            btnLower.disabled = false;
+
+            generateRandomDiceNumbers(1);
+
+            const sumA = sumDiceNumbers(divDice1_1.innerHTML, divDice2_1.innerHTML, divDice3_1.innerHTML);
+
+            divSumA.innerHTML = 'pierwszy rzut suma: ' + sumA;
+
+            whoFirst = false;
+
+        }
+
+        function isBiggerOrLower() {
+            
+            return !!Math.round(Math.random());
+            
+        }
+
+        function countPoints(playerName, flagDecision) {
+            /* flag_decision: false - next sum will be lower; true - next sum will be bigger */
+
+            const sumA = sumDiceNumbers(divDice1_1.innerHTML, divDice2_1.innerHTML, divDice3_1.innerHTML);
+
+            generateRandomDiceNumbers(2);
+
+            const sumB = sumDiceNumbers(divDice1_2.innerHTML, divDice2_2.innerHTML, divDice3_2.innerHTML);
+            divSumB.innerHTML = 'drugi rzut suma: ' + sumB;
+
+            if (playerName === 'COMPUTER') {
+
+                if (flagDecision === true) {
+                    divDecisionMsg.innerHTML = 'komputer obstawił, że suma oczek w kolejnym rzucie będzie WIĘKSZA';
+
+                    if (sumB > sumA) {
+                        console.log('miał rację suma oczek z drugiego rzutu jest większa!');
+                        computerPoints++;
+                        spanComputerPoints.innerHTML = computerPoints;
+                    } else if (sumB < sumA) {
+                        console.log('NIE miał racji suma oczek z drugiego rzutu jest mniejsza');
+                        playerPoints++;
+                        spanPlayerPoints.innerHTML = playerPoints;
+                    } else {
+                        console.log('może sumy są takie same?');
+                    }
+                } else if (flagDecision === false) {
+                    divDecisionMsg.innerHTML = 'komputer obstawił, że suma oczek w kolejnym rzucie będzie MNIEJSZA';
+
+                    if (sumB < sumA) {
+                        console.log('miał rację suma oczek z drugiego rzutu jest mniejsza!');
+                        computerPoints++;
+                        spanComputerPoints.innerHTML = computerPoints;
+                    } else if (sumB > sumA) {
+                        console.log('NIE miał racji suma oczek z drugiego rzutu jest większa');
+                        playerPoints++;
+                        spanPlayerPoints.innerHTML = playerPoints;
+                    } else {
+                        console.log('może sumy są takie same?');
+                    }
+                } else {
+                    console.log('problem z podjęciem decyzji przez komputer | points');
+                }
+
+            } else if (playerName === 'PLAYER') {
+
+                if (flagDecision === true) {
+                    divDecisionMsg.innerHTML = 'obstawiłeś/aś, że suma oczek w kolejnym rzucie będzie WIĘKSZA';
+
+                    if (sumB > sumA) {
+                        console.log('miałeś/aś rację suma oczek z drugiego rzutu jest większa!');
+                        playerPoints++;
+                        spanPlayerPoints.innerHTML = playerPoints;
+                    } else if (sumB < sumA) {
+                        console.log('NIE miałeś/aś racji suma oczek z drugiego rzutu jest mniejsza');
+                        computerPoints++;
+                        spanComputerPoints.innerHTML = computerPoints;
+                    } else {
+                        console.log('może sumy są takie same?');
+                    }
+                } else if (flagDecision === false) {
+                    divDecisionMsg.innerHTML = 'obstawiłeś/aś, że suma oczek w kolejnym rzucie będzie MNIEJSZA';
+
+                    if (sumB < sumA) {
+                        console.log('miałeś/aś rację suma oczek z drugiego rzutu jest mniejsza!');
+                        playerPoints++;
+                        spanPlayerPoints.innerHTML = playerPoints;
+                    } else if (sumB > sumA) {
+                        console.log('NIE miałeś/aś racji suma oczek z drugiego rzutu jest większa');
+                        computerPoints++;
+                        spanComputerPoints.innerHTML = computerPoints;
+                    } else {
+                        console.log('może sumy są takie same?');
+                    }
+                } else {
+                    console.log('problem z podjęciem decyzji przez gracza | function points');
+                }
+
+            } else {
+                console.log('problem z funkcją points');
+            }
+
+        }
+
+        function showPlayerDecision(flagDecision) {
+
+            btnBigger.disabled = true;
+            btnLower.disabled = true;
+
+            countPoints('PLAYER', flagDecision);
+
+        }
+
+        function showPlayerDecisionBigger() {
+            showPlayerDecision(true);
+        }
+
+        function showPlayerDecisionLower() {
+            showPlayerDecision(false);
+        }
+
+        function playPlayerRound() {
+
+            btnBigger.disabled = true;
+            btnLower.disabled = true;
+
+            generateRandomDiceNumbers(1);
+
+            const sumA = sumDiceNumbers(divDice1_1.innerHTML, divDice2_1.innerHTML, divDice3_1.innerHTML);
+
+            divSumA.innerHTML = 'pierwszy rzut suma: ' + sumA;
+
+            const computerDecision = isBiggerOrLower();
+
+            countPoints('COMPUTER', computerDecision);
+
+            whoFirst = true;
+        }
+
+        function goToNextRound() {
+
+            if (counter >= 5) {
+                showWinner();
+            } else {
+                counter++;
+                spanRound.innerHTML = counter;
+
+                clearGameBoard(diceArray);
+
+                if (whoFirst === true) {
+                    playComputerRound();
+                } else {
+                    playPlayerRound();
+                }
+            }
+
+        }
+
+        btnStart.addEventListener('click', (e) => {
+
+            // start_view.setAttribute( 'class', 'invisible' );
+            spanRound.innerHTML = counter;
+            spanPlayerPoints.innerHTML = playerPoints;
+            spanComputerPoints.innerHTML = computerPoints;
+
+            if (spanFirstPlayer.innerHTML === 'komputer') {
+                playComputerRound();
+            } else {
+                playPlayerRound();
+            }
+
+            btnStart.disabled = true;
+
+        });
+
+        btnBigger.addEventListener('click', showPlayerDecisionBigger);
+        btnLower.addEventListener('click', showPlayerDecisionLower);
+
+        btnNext.addEventListener('click', goToNextRound);
+
     }
 
-    btn_start.addEventListener('click', (e) => {
-
-        // start_view.setAttribute( 'class', 'invisible' );
-        span_round.innerHTML = counter;
-        span_player_points.innerHTML = player_points;
-        span_computer_points.innerHTML = computer_points;
-
-        if (span_first_player.innerHTML === 'komputer') {
-            computerRound();
-        } else {
-            playerRound();
-        }
-        
-        btn_start.disabled = true;
-
-    });
-
-    btn_bigger.addEventListener('click', playerDecisionBigger);
-    btn_lower.addEventListener('click', playerDecisionLower);
-
-    btn_next.addEventListener('click', nextRound);
+    showStartPage();
+    showGamePage();
 
 }());
