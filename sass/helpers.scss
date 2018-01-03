@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,600i|Roboto:400,400i,700,700i&subset=latin-ext');
+$game_titles: 'Montserrat',
+sans-serif;
+$game_content: 'Roboto',
+sans-serif;
+
+$grey_color: rgba(50,
+50,
+50,
+.7);
+$yellow_color: #ffba00;
+
+@keyframes dice_pulse {
+    0% {
+        background-image: url('../img/dices.png');
+    }
+    30% {
+        background-image: url('../img/dices_gold_left.png');
+    }
+
+    60% {
+        background-image: url('../img/dices_gold_right.png');
+    }
+
+    100% {
+        background-image: url('../img/dices_gold.png');
+    }
+}

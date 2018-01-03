@@ -1,3 +1,44 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,600i|Roboto:400,400i,700,700i&subset=latin-ext");
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
+html { font-size: 10px; }
+
+body { overflow-x: hidden; margin-top: 6vh; }
+
+a { text-decoration: none; color: inherit; }
+
+input:focus, button:focus { outline: none; }
+
+@keyframes dice_pulse { 0% { background-image: url("../img/dices.png"); }
+  30% { background-image: url("../img/dices_gold_left.png"); }
+  60% { background-image: url("../img/dices_gold_right.png"); }
+  100% { background-image: url("../img/dices_gold.png"); } }
+.start_buttons { font-size: 2rem; font-family: "Montserrat", sans-serif; letter-spacing: .2rem; text-transform: uppercase; padding: 1.2rem; margin: 2.2rem; border-radius: 1rem; border: 0.2rem solid #ffba00; background-color: inherit; color: #010101; }
+.start_buttons:hover { background-color: #ffba00; cursor: pointer; }
+
+header { width: 100vw; height: 5.5vh; position: fixed; top: 0; left: 0; display: flex; justify-content: space-around; align-items: center; background-color: rgba(50, 50, 50, 0.7); padding: .4rem; font-family: "Montserrat", sans-serif; color: #efefef; letter-spacing: .2rem; }
+header h1 { flex-basis: 1; font-size: 1.8rem; padding: .4rem; text-transform: uppercase; }
+header .to_game_rules { flex-basis: 1; font-size: 1.6rem; padding: .4rem; border-radius: 1rem; border-bottom: 0.2rem solid #ffba00; transition: all .6s ease-in-out; }
+header .to_game_rules:hover { background-color: #ffba00; color: #010101; }
+
+footer { width: 100vw; height: 3vh; position: fixed; bottom: 0; left: 0; text-align: center; background-color: rgba(50, 50, 50, 0.7); padding: .4rem; font-family: "Montserrat", sans-serif; color: #efefef; letter-spacing: .2rem; }
+footer a:hover { color: #ffba00; }
+
+.sect_log, .sect_who_first, .sect_start, .sect_game_rules { height: 100vh; width: 100vw; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+
+.div_log { height: 75vh; width: 60vw; background-image: url("../img/dices.png"); /* thanks mohamed_hassan https://pixabay.com/pl/white-tle-design-gry-ikona-gra%C4%87-2398914/*/ background-position: center; background-size: contain; background-repeat: no-repeat; display: flex; flex-direction: column; flex-wrap: wrap; justify-content: space-between; align-content: space-between; }
+.div_log h2 { height: 100%; width: 50%; text-align: center; font-family: "Montserrat", sans-serif; font-size: 3.2rem; letter-spacing: .4rem; text-transform: uppercase; padding-top: 2rem; }
+.div_log .input_name { height: 100%; width: 50%; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: flex-end; align-content: flex-end; }
+.div_log .input_name input { padding: .4rem 1rem; border-top: none; border-left: none; border-right: none; border-bottom: 0.2rem solid #ffba00; margin: 2rem 0; font-size: 1.8rem; font-family: "Roboto", sans-serif; letter-spacing: .18rem; }
+.div_log .input_name p { padding-bottom: 4rem; text-align: right; font-size: 1.4rem; font-family: "Roboto", sans-serif; }
+.div_log:hover { animation: dice_pulse 0.8s ease 4 alternate; }
+
+.div_who_first { text-align: center; }
+.div_who_first .first_player { font-size: 1.6rem; font-family: "Roboto", sans-serif; }
+.div_who_first .first_player span { display: inline-block; min-width: 6rem; padding: .4rem; text-transform: uppercase; border-bottom: 0.2rem solid #ffba00; }
+
+.div_game_rules h3 { text-align: center; margin: 1rem; font-size: 2.4rem; font-family: "Montserrat", sans-serif; letter-spacing: .4rem; text-transform: uppercase; padding-bottom: 1rem; border-bottom: 0.2rem solid #ffba00; }
+.div_game_rules ol { padding: 1rem; font-size: 1.4rem; font-family: "Roboto", sans-serif; list-style-position: inside; }
+.div_game_rules ol li { padding: .4rem; }
 
 /*# sourceMappingURL=style.css.map */

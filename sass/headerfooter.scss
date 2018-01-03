@@ -1,0 +1,64 @@
+header {
+    width: 100vw;
+    height: 5.5vh;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    background-color: $grey_color;
+    padding: .4rem;
+    font-family: $game_titles;
+    color: #efefef;
+    letter-spacing: .2rem;
+    
+    h1 {
+        flex-basis: 1;
+        
+        font-size: 1.8rem;
+        padding: .4rem;
+        text-transform: uppercase;
+    }
+    
+    .to_game_rules {
+        flex-basis: 1;
+        
+        font-size: 1.6rem;
+        padding: .4rem;
+        border-radius: 1rem;
+        border-bottom: .2rem solid $yellow_color;
+        
+        transition: all .6s ease-in-out;
+        
+        &:hover {
+            background-color: $yellow_color;
+            color: #010101;
+        }
+        
+    }
+}
+
+footer {
+    width: 100vw;
+    height: 3vh;
+    
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    
+    text-align: center;
+    
+    background-color: $grey_color;
+    padding: .4rem;
+    font-family: $game_titles;
+    color: #efefef;
+    letter-spacing: .2rem;
+    
+    a:hover {
+        color: $yellow_color;
+    }
+}

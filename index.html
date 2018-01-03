@@ -10,53 +10,76 @@
 <body>
 
     <header>
-        <h1>GRA W KOŚCI</h1>
+        <h1>gra w kości</h1>
+        <a href="#" class="to_game_rules">zasady gry</a>
     </header>
 
     <main>
 
         <div id="container_start">
 
-            <section class="log">
+            <section class="sect_log">
 
-                <label class="give_name">
-              Podaj imię:
-               <input type="text" id="input_name">
-            </label>
+                <div class="div_log">
 
-                <p>lub pozostań anonimowy, zagrasz jako 'Tajemniczy Gość'</p>
+                    <h2>gra w kości</h2>
 
-                <button id="btn_first_player">SPRAWDŻ KTO ROZPOCZNIE GRĘ</button>
+                    <div class="input_name">
 
-                <div class="first_player"> Grę rozpoczyna: <span id="first_player_name">__________</span></div>
+                        <input type="text" id="input_name" placeholder=" wpisz swoje imię" autofocus>
 
-            </section>
+                        <p>lub pozostań anonimowy, zagrasz jako 'Tajemniczy Gość'</p>
 
-            <section class="start">
+                    </div>
 
-                <button id="btn_start">START GRY!</button>
+                </div>
 
             </section>
 
-<!--
-            <article class="game_rules">
+            <section class="sect_who_first">
 
-                <h2>ZASADY GRY</h2>
+                <div class="div_who_first">
 
-                <ol>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id doloribus laboriosam magnam maiores animi perspiciatis explicabo repellat eum fugiat sit, enim in mollitia, unde, dolorum aperiam totam quisquam pariatur quam.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente saepe, reiciendis aut harum vel nam, est odit doloribus voluptatum repellat eveniet cumque officiis possimus voluptatem. Voluptatibus nesciunt, aliquam odit nam.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat voluptatem iste cupiditate perspiciatis excepturi velit, quia sed culpa, aperiam sunt quisquam laborum deleniti accusantium, provident est non consequuntur harum odit?</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, quod dolores, quos sunt corporis ducimus, illum rerum ea obcaecati repudiandae, natus inventore nostrum adipisci tempore. Illum voluptas consequatur iure recusandae.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio neque sequi vel earum dolorem totam veniam eveniet, dignissimos enim iste nostrum quam, odit molestiae sapiente nam nobis ab amet doloribus.</li>
-                </ol>
+                    <button id="btn_first_player" class="start_buttons">sprawdź kto rozpocznie grę</button>
 
-            </article>
--->
+                    <div class="first_player">grę rozpoczyna: <span id="first_player_name"> </span></div>
+
+                </div>
+
+            </section>
+
+            <section class="sect_start">
+
+                <button id="btn_start" class="start_buttons">start gry!</button>
+
+            </section>
+
+            <section class="sect_game_rules">
+
+                <div class="div_game_rules">
+
+                    <h3>zasady gry</h3>
+
+                    <ol>
+                        <li>Gra pomiędzy Tobą a komputerem!</li>
+                        <li>Gra obejmuje 5 rund, każda ma dwa rzuty i proces decyzji.</li>
+                        <li>Rozpoczynającego gracz jest wybierany losowo.</li>
+                        <li>Gracz wylosowany jako pierwszy, jest graczem rzucającym kośćmi w pierwszej rundzie.</li>
+                        <li>Gracz, który nie został wylosowany jest graczem obstawiającym sumę "oczek na kostkach" w kolejnym rzucie.</li>
+                        <li>Obstawianie polega na decyzji, czy kolejny rzut będzie miał większą lub mniejszą wartość. W przypadku komputera decyzja podejmowana jest losowo</li>
+                        <li>Jeżeli gracz obstawiający miał rację, dostaje punkt. Jeśli nie, punkt dostaje gracz rzucający kośmi.</li>
+                        <li>Gracze zamieniają się rolami po zakończonej rundzie.</li>
+                        <li>Wygrywa gracz, który po 5 rundach ma więcej punktów.</li>
+                        <li>Baw się dobrze! :) </li>
+                    </ol>
+                </div>
+
+            </section>
 
         </div>
+
         
-        <span>************************************************************************************************</span>
+        <span>*********************************************tu już ładnie nie jest - JESZCZE!***************************************************</span>
 
         <div id="container_game">
 
@@ -92,9 +115,10 @@
             <div>zwycięzca: <span id="winner">___</span></div>
         </div>
 
+
     </main>
 
-<!--    <footer> Marta &copy; 2017 </footer>-->
+        <footer> app designed by: <a href="https://www.linkedin.com/in/marta-mucha-balcerek-99012113b/" target="_blank">Marta Mucha-Balcerek</a> &copy; 2017/2018 </footer>
 
     <script src="js/script.js"></script>
 </body>

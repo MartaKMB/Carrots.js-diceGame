@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    overflow-x: hidden;
+    margin-top: 6vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+input:focus, button:focus {
+    outline: none;
+}

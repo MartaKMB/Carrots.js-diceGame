@@ -1,0 +1,122 @@
+.sect_log, .sect_who_first, .sect_start, .sect_game_rules {
+    height: 100vh;
+    width: 100vw;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_log {
+    height: 75vh;
+    width: 60vw;
+    
+    background-image: url('../img/dices.png');
+    /* thanks mohamed_hassan https://pixabay.com/pl/white-tle-design-gry-ikona-gra%C4%87-2398914/*/
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    
+    h2 {
+        height: 100%;
+        width: 50%;
+        
+        text-align: center;
+        font-family: $game_titles;
+        font-size: 3.2rem;
+        letter-spacing: .4rem;
+        text-transform: uppercase;
+        padding-top: 2rem;
+    }
+    
+    .input_name {
+        height: 100%;
+        width: 50%;
+        
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: flex-end;
+        align-content: flex-end;
+        
+        input {
+            padding: .4rem 1rem;
+            border: {
+                top: none;
+                left: none;
+                right: none;
+                bottom: .2rem solid $yellow_color;
+            }
+            
+            margin: 2rem 0;
+            
+            font-size: 1.8rem;
+            font-family: $game_content;
+            letter-spacing: .18rem;
+
+        }
+        
+        p {
+            padding-bottom: 4rem;
+            
+            text-align: right;
+            font-size: 1.4rem;
+            font-family: $game_content;
+        }
+    }
+    
+    &:hover {
+        animation: dice_pulse .8s ease 4 alternate,
+    }
+}
+
+.div_who_first {
+    text-align: center;
+    
+    .first_player {
+        font-size: 1.6rem;
+        font-family: $game_content;
+        
+        span {
+            display: inline-block;
+            min-width: 6rem;
+            padding: .4rem;
+            text-transform: uppercase;
+            border-bottom: .2rem solid $yellow_color;
+        }
+    }
+}
+
+.div_game_rules {
+    
+    h3 {
+        text-align: center;
+        margin: 1rem;
+        
+        font-size: 2.4rem;
+        font-family: $game_titles;
+        letter-spacing: .4rem;
+        text-transform: uppercase;
+        
+        padding-bottom: 1rem;
+        border-bottom: .2rem solid $yellow_color;
+    }
+    
+    ol {
+        padding: 1rem;
+        font-size: 1.4rem;
+        font-family: $game_content;
+        list-style-position: inside;
+        
+        li {
+            padding: .4rem;
+        }
+    }
+}
