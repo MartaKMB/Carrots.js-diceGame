@@ -18,6 +18,10 @@
         background-color: $yellow_color;
         cursor: pointer;
     }
+    
+    &:disabled {
+        cursor: none;
+    }
 }
 
 .btn_decision {
@@ -37,6 +41,10 @@
     &:hover {
         background-color: $yellow_color;
         cursor: pointer;
+    }
+    
+    &:disabled {
+        cursor: none;
     }
 }
 
@@ -62,4 +70,15 @@
     
     background-color: $yellow_color;
     color: #010101;
+}
+
+input:focus, button:focus {
+    outline: none;
+}
+
+button:disabled {
+    background-color: #b6b4af;
+    color: #868379;
+    border-color: #868379;
+//    cursor: not-allowed;
 }

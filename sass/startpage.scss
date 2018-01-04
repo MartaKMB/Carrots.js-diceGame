@@ -47,6 +47,7 @@
         align-content: flex-end;
         
         input {
+            width: 60%;
             padding: .4rem 1rem;
             border: {
                 top: none;
@@ -64,6 +65,7 @@
         }
         
         p {
+            width: 100%;
             padding-bottom: 4rem;
             
             text-align: right;
@@ -99,6 +101,10 @@
     height: 75vh;
     width: 75vw;
     
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
     h3 {
         text-align: center;
         margin: 1rem;
@@ -117,6 +123,7 @@
         font-size: 1.4rem;
         font-family: $game_content;
         list-style-position: inside;
+        letter-spacing: .2rem;
         
         li {
             padding: .4rem;

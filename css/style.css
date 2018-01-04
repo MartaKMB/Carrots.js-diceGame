@@ -3,11 +3,9 @@
 
 html { font-size: 10px; }
 
-body { overflow-x: hidden; margin-top: 6vh; }
+body { overflow-x: hidden; margin-top: 6vh; margin-bottom: 6vh; }
 
 a { text-decoration: none; color: inherit; }
-
-input:focus, button:focus { outline: none; }
 
 .invisible { display: none; }
 
@@ -17,13 +15,19 @@ input:focus, button:focus { outline: none; }
   100% { background-image: url("../img/dices_gold.png"); } }
 .start_buttons, .button_round, .game_winner, .from_begining_btn { font-size: 2rem; font-family: "Montserrat", sans-serif; letter-spacing: .2rem; text-transform: uppercase; color: #010101; padding: 1.2rem; margin: 2.2rem; border-radius: 1rem; border: 0.2rem solid #ffba00; background-color: inherit; transition: all .6s ease; }
 .start_buttons:hover, .button_round:hover, .game_winner:hover, .from_begining_btn:hover { background-color: #ffba00; cursor: pointer; }
+.start_buttons:disabled, .button_round:disabled, .game_winner:disabled, .from_begining_btn:disabled { cursor: none; }
 
 .btn_decision { width: 8rem; height: 8rem; font-size: 6rem; font-family: "Montserrat", sans-serif; color: #010101; background-color: inherit; border-radius: 50%; border: 0.2rem solid #ffba00; transition: all .6s ease; }
 .btn_decision:hover { background-color: #ffba00; cursor: pointer; }
+.btn_decision:disabled { cursor: none; }
 
 .game_winner { display: none; position: fixed; top: 35%; lefy: 35%; width: 30%; padding: 2rem; background-color: rgba(50, 50, 50, 0.7); text-align: center; color: #fefefe; }
 
 .from_begining_btn { display: block; margin: 2rem auto; background-color: #ffba00; color: #010101; }
+
+input:focus, button:focus { outline: none; }
+
+button:disabled { background-color: #b6b4af; color: #868379; border-color: #868379; }
 
 header { width: 100vw; height: 5.5vh; position: fixed; top: 0; left: 0; display: flex; justify-content: space-around; align-items: center; background-color: rgba(50, 50, 50, 0.7); padding: .4rem; font-family: "Montserrat", sans-serif; color: #efefef; letter-spacing: .2rem; }
 header h1 { flex-basis: 1; font-size: 1.8rem; padding: .4rem; text-transform: uppercase; }
@@ -38,22 +42,23 @@ footer a:hover { color: #ffba00; }
 .div_log { height: 75vh; width: 75vw; background-image: url("../img/dices.png"); /* thanks mohamed_hassan https://pixabay.com/pl/white-tle-design-gry-ikona-gra%C4%87-2398914/*/ background-position: center; background-size: contain; background-repeat: no-repeat; display: flex; flex-direction: column; flex-wrap: wrap; justify-content: space-between; align-content: space-between; }
 .div_log h2 { height: 100%; width: 50%; text-align: center; font-family: "Montserrat", sans-serif; font-size: 3.2rem; letter-spacing: .4rem; text-transform: uppercase; padding-top: 2rem; }
 .div_log .input_name { height: 100%; width: 50%; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: flex-end; align-content: flex-end; }
-.div_log .input_name input { padding: .4rem 1rem; border-top: none; border-left: none; border-right: none; border-bottom: 0.2rem solid #ffba00; margin: 2rem 0; font-size: 1.8rem; font-family: "Roboto", sans-serif; letter-spacing: .18rem; }
-.div_log .input_name p { padding-bottom: 4rem; text-align: right; font-size: 1.4rem; font-family: "Roboto", sans-serif; }
+.div_log .input_name input { width: 60%; padding: .4rem 1rem; border-top: none; border-left: none; border-right: none; border-bottom: 0.2rem solid #ffba00; margin: 2rem 0; font-size: 1.8rem; font-family: "Roboto", sans-serif; letter-spacing: .18rem; }
+.div_log .input_name p { width: 100%; padding-bottom: 4rem; text-align: right; font-size: 1.4rem; font-family: "Roboto", sans-serif; }
 .div_log:hover { animation: dice_pulse 0.8s ease 4 alternate; }
 
 .div_who_first { text-align: center; }
 .div_who_first .first_player { font-size: 1.6rem; font-family: "Roboto", sans-serif; }
 .div_who_first .first_player span { display: inline-block; min-width: 6rem; padding: .4rem; text-transform: uppercase; border-bottom: 0.2rem solid #ffba00; }
 
-.div_game_rules { height: 75vh; width: 75vw; }
+.div_game_rules { height: 75vh; width: 75vw; display: flex; flex-direction: column; justify-content: center; }
 .div_game_rules h3 { text-align: center; margin: 1rem; font-size: 2.4rem; font-family: "Montserrat", sans-serif; letter-spacing: .4rem; text-transform: uppercase; padding-bottom: 1rem; border-bottom: 0.2rem solid #ffba00; }
-.div_game_rules ol { padding: 1rem; font-size: 1.4rem; font-family: "Roboto", sans-serif; list-style-position: inside; }
+.div_game_rules ol { padding: 1rem; font-size: 1.4rem; font-family: "Roboto", sans-serif; list-style-position: inside; letter-spacing: .2rem; }
 .div_game_rules ol li { padding: .4rem; }
 
-.class_container_game { width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.class_container_game { width: 100vw; height: 100vh; display: none; flex-direction: column; justify-content: center; align-items: center; }
 
 .sect_game { width: 75vw; height: 75vh; }
+.sect_game .the_game { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-content: center; }
 
 .top_game { width: 100%; display: flex; justify-content: space-around; flex-wrap: wrap; }
 .top_game .div_round { flex: 3; font-size: 3.2rem; font-weight: 400; font-family: "Montserrat", sans-serif; letter-spacing: .4rem; text-transform: uppercase; display: flex; justify-content: center; align-items: center; }
@@ -61,13 +66,13 @@ footer a:hover { color: #ffba00; }
 .top_game ul { flex: 1; list-style: none; display: flex; flex-direction: column; justify-content: space-around; font-size: 1.2rem; font-family: "Roboto", sans-serif; }
 .top_game ul li .span_points { display: inline-block; min-width: 6rem; padding: .4rem; border-bottom: 0.2rem solid #ffba00; text-align: center; font-size: 1.8rem; }
 
-.the_game { min-height: 70%; margin: 4rem auto; display: flex; justify-content: space-around; align-items: center; }
-.the_game .div_throw { flex: 2; font-size: 2rem; font-family: "Montserrat", sans-serif; letter-spacing: .4rem; text-transform: uppercase; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-.the_game .div_throw .dice { width: 8rem; height: 8rem; line-height: 8rem; margin: 2rem; font-family: "Roboto", sans-serif; text-align: center; font-size: 6rem; color: #ffba00; background-color: #010101; }
-.the_game .div_throw .sum { font-family: "Roboto", sans-serif; font-size: 1.2rem; margin: 1rem auto; }
-.the_game .div_decision { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-.the_game .div_decision button { margin: 2rem; }
-.the_game .div_decision div { text-align: center; font-family: "Roboto", sans-serif; padding: 1rem; font-size: 1.2rem; min-height: 7rem; align-self: flex-end; }
+.throwing_container { margin: 4rem auto; width: 100%; display: flex; justify-content: space-around; align-items: center; }
+.throwing_container .div_throw { flex: 2; font-size: 2rem; font-family: "Montserrat", sans-serif; letter-spacing: .4rem; text-transform: uppercase; display: flex; flex-wrap: wrap; flex-direction: column; justify-content: center; align-items: center; }
+.throwing_container .div_throw .dice { width: 8rem; height: 8rem; line-height: 8rem; margin: 2rem; font-family: "Roboto", sans-serif; text-align: center; font-size: 6rem; color: #ffba00; background-color: #010101; }
+.throwing_container .div_throw .sum { font-family: "Roboto", sans-serif; font-size: 1.2rem; margin: 1rem auto; }
+.throwing_container .div_decision { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.throwing_container .div_decision button { margin: 2rem; }
+.throwing_container .div_decision div { text-align: center; font-family: "Roboto", sans-serif; padding: 1rem; font-size: 1.2rem; min-height: 7rem; align-self: flex-end; }
 
 .div_next { text-align: center; }
 

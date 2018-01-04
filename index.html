@@ -16,7 +16,7 @@
 
     <main>
 
-        
+
         <div id="container_start">
 
             <section class="sect_log">
@@ -55,30 +55,7 @@
 
             </section>
 
-            <section class="sect_game_rules" id="id_rules">
-
-                <div class="div_game_rules">
-
-                    <h3>zasady gry</h3>
-
-                    <ol>
-                        <li>Gra pomiędzy Tobą a komputerem!</li>
-                        <li>Gra obejmuje 5 rund, każda ma dwa rzuty i proces decyzji.</li>
-                        <li>Rozpoczynającego gracz jest wybierany losowo.</li>
-                        <li>Gracz wylosowany jako pierwszy, jest graczem rzucającym kośćmi w pierwszej rundzie.</li>
-                        <li>Gracz, który nie został wylosowany jest graczem obstawiającym sumę "oczek na kostkach" w kolejnym rzucie.</li>
-                        <li>Obstawianie polega na decyzji, czy kolejny rzut będzie miał większą lub mniejszą wartość. W przypadku komputera decyzja podejmowana jest losowo</li>
-                        <li>Jeżeli gracz obstawiający miał rację, dostaje punkt. Jeśli nie, punkt dostaje gracz rzucający kośmi.</li>
-                        <li>Gracze zamieniają się rolami po zakończonej rundzie.</li>
-                        <li>Wygrywa gracz, który po 5 rundach ma więcej punktów.</li>
-                        <li>Baw się dobrze! :) </li>
-                    </ol>
-                </div>
-
-            </section>
-
         </div>
-
 
         <div id="container_game" class="class_container_game">
 
@@ -93,8 +70,10 @@
                     </ul>
 
                 </div>
-
+                
                 <div class="the_game">
+
+                <div class="throwing_container">
 
                     <div class="div_throw">
                         pierwszy rzut
@@ -108,8 +87,8 @@
 
                     <div class="div_decision">
 
-                        <button id="bigger" title="Suma oczek wyrzuconych w kolejnej rundzie będzie WIĘKSZA od tej" class="btn_decision"> &gt; </button>
-                        <button id="lower" title="Suma oczek wyrzuconych w kolejnej rundzie będzie MNIEJSZA od tej" class="btn_decision"> &lt;</button>
+                        <button id="bigger" title="Suma oczek wyrzuconych w kolejnej rundzie będzie WIĘKSZA od tej" class="btn_decision"> &lt; </button>
+                        <button id="lower" title="Suma oczek wyrzuconych w kolejnej rundzie będzie MNIEJSZA od tej" class="btn_decision"> &gt;</button>
 
                         <div id="decision_msg"></div>
                     </div>
@@ -127,14 +106,40 @@
                 </div>
                 
                 <div class="div_next"><button id="next_round" class="button_round">KOLEJNA RUNDA</button></div>
+                </div>
+
+                
 
             </section>
-            
+
             <div class="game_winner" id="msg_winner">zwycięzca: <span id="winner"> </span>
-            <button id="from_begining" class="from_begining_btn">chcę zagrać jeszcze raz</button>
+                <button id="from_begining" class="from_begining_btn">chcę zagrać jeszcze raz</button>
             </div>
         </div>
 
+        <section class="sect_game_rules" id="id_rules">
+
+            <div class="div_game_rules">
+
+                <h3>zasady gry</h3>
+
+                <ol>
+                    <li>Gra pomiędzy Tobą a komputerem!</li>
+                    <li>Gra obejmuje 5 rund, każda ma dwa rzuty i proces decyzji.</li>
+                    <li>Rozpoczynającego gracz jest wybierany losowo.</li>
+                    <li>Gracz wylosowany jako pierwszy, jest graczem rzucającym kośćmi w pierwszej rundzie.</li>
+                    <li>Gracz, który nie został wylosowany jest graczem obstawiającym sumę "oczek na kostkach" w kolejnym rzucie.</li>
+                    <li>Obstawianie polega na decyzji, czy kolejny rzut będzie miał większą lub mniejszą wartość. W przypadku komputera decyzja podejmowana jest losowo</li>
+                    <li>Jeżeli gracz obstawiający miał rację, dostaje punkt. Jeśli nie, punkt dostaje gracz rzucający kośmi.</li>
+                    <li>Gracze zamieniają się rolami po zakończonej rundzie.</li>
+                    <li>Wygrywa gracz, który po 5 rundach ma więcej punktów.</li>
+                    <li>Baw się dobrze! :) </li>
+                </ol>
+                
+            </div>
+
+        </section>
+        
 
     </main>
 

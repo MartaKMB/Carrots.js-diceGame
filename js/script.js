@@ -63,6 +63,7 @@
         const spanFirstPlayer = document.querySelector('#first_player_name');
         const btnStart = document.querySelector('#btn_start');
         const startView = document.querySelector('#container_start');
+        const gameView = document.querySelector('#container_game');
 
         let whoFirst = true; /* start: true - computer, false - user */
 
@@ -331,6 +332,12 @@
         btnStart.addEventListener('click', (e) => {
 
             startView.setAttribute( 'class', 'invisible');
+            gameView.style.display = 'flex';
+            
+            gameView.scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            
             spanRound.innerHTML = counter;
             spanPlayerPoints.innerHTML = playerPoints;
             spanComputerPoints.innerHTML = computerPoints;
