@@ -37,6 +37,7 @@ footer a:hover { color: #ffba00; }
 .div_who_first .first_player { font-size: 1.6rem; font-family: "Roboto", sans-serif; }
 .div_who_first .first_player span { display: inline-block; min-width: 6rem; padding: .4rem; text-transform: uppercase; border-bottom: 0.2rem solid #ffba00; }
 
+.div_game_rules { margin-left: 4rem; margin-right: 4rem; }
 .div_game_rules h3 { text-align: center; margin: 1rem; font-size: 2.4rem; font-family: "Montserrat", sans-serif; letter-spacing: .4rem; text-transform: uppercase; padding-bottom: 1rem; border-bottom: 0.2rem solid #ffba00; }
 .div_game_rules ol { padding: 1rem; font-size: 1.4rem; font-family: "Roboto", sans-serif; list-style-position: inside; }
 .div_game_rules ol li { padding: .4rem; }

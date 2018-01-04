@@ -2,13 +2,24 @@
 
     function showStartPage() {
 
+        const inputName = document.querySelector('#input_name');
+        
+        const sectWhoFirst = document.querySelector('.sect_who_first');
         const btnFirstPlayer = document.querySelector('#btn_first_player');
         const spanFirstPlayer = document.querySelector('#first_player_name');
-
-        const startView = document.querySelector('#container_start');
-
-        btnFirstPlayer.addEventListener('click', (e) => {
-
+        
+        const sectStart = document.querySelector('.sect_start');
+        
+        function scrollToNext(view) {
+            
+            view.scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            
+        }
+        
+        function showFirstPlayerAndGoToStartBtn() {
+            
             let playerName = document.querySelector('#input_name').value;
 
             let drawedNum = Math.round(Math.random());
@@ -24,8 +35,27 @@
             }
 
             btnFirstPlayer.disabled = true;
+            
+            setTimeout(function(){
+              scrollToNext(sectStart);
+            }, 1600);
+            
+        }
+        
+        inputName.addEventListener('keydown', (e) => {
+            
+            if (e.which === 13) {
+                scrollToNext(sectWhoFirst);
+            }
+            
+        });
+
+        btnFirstPlayer.addEventListener('click', (e) => {
+            
+            showFirstPlayerAndGoToStartBtn();
 
         });
+        
     }
 
     function showGamePage() {
