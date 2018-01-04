@@ -10,7 +10,7 @@
 
 .div_log {
     height: 75vh;
-    width: 60vw;
+    width: 75vw;
     
     background-image: url('../img/dices.png');
     /* thanks mohamed_hassan https://pixabay.com/pl/white-tle-design-gry-ikona-gra%C4%87-2398914/*/
@@ -96,10 +96,8 @@
 
 .div_game_rules {
     
-    margin: {
-        left: 4rem;
-        right: 4rem;
-    }
+    height: 75vh;
+    width: 75vw;
     
     h3 {
         text-align: center;

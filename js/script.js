@@ -62,6 +62,7 @@
 
         const spanFirstPlayer = document.querySelector('#first_player_name');
         const btnStart = document.querySelector('#btn_start');
+        const startView = document.querySelector('#container_start');
 
         let whoFirst = true; /* start: true - computer, false - user */
 
@@ -94,6 +95,9 @@
         const divDecisionMsg = document.querySelector('#decision_msg')
 
         const btnNext = document.querySelector('#next_round');
+        
+        const msgWinner = document.querySelector('#msg_winner');
+        const btnFromBegining = document.querySelector('#from_begining');
 
         const diceArray = [divDice1_1, divDice2_1, divDice3_1, divDice1_2, divDice2_2, divDice3_2, divSumA, divSumB, divDecisionMsg];
 
@@ -114,6 +118,8 @@
             btnBigger.disabled = true;
             btnLower.disabled = true;
             btnNext.disabled = true;
+            
+            msgWinner.style.display = 'block';
 
             if (playerPoints > computerPoints) {
                 spanWinner.innerHTML = document.querySelector('#input_name').value + ' jesteś zwycięzcą!';
@@ -287,7 +293,7 @@
 
             btnBigger.disabled = true;
             btnLower.disabled = true;
-
+            
             generateRandomDiceNumbers(1);
 
             const sumA = sumDiceNumbers(divDice1_1.innerHTML, divDice2_1.innerHTML, divDice3_1.innerHTML);
@@ -295,8 +301,10 @@
             divSumA.innerHTML = 'pierwszy rzut suma: ' + sumA;
 
             const computerDecision = isBiggerOrLower();
-
-            countPoints('COMPUTER', computerDecision);
+            
+            setTimeout(function(){
+                countPoints('COMPUTER', computerDecision);
+            }, 1000);
 
             whoFirst = true;
         }
@@ -322,7 +330,7 @@
 
         btnStart.addEventListener('click', (e) => {
 
-            // start_view.setAttribute( 'class', 'invisible' );
+            startView.setAttribute( 'class', 'invisible');
             spanRound.innerHTML = counter;
             spanPlayerPoints.innerHTML = playerPoints;
             spanComputerPoints.innerHTML = computerPoints;
@@ -341,6 +349,10 @@
         btnLower.addEventListener('click', showPlayerDecisionLower);
 
         btnNext.addEventListener('click', goToNextRound);
+        
+        btnFromBegining.addEventListener('click', (e) => {
+            window.location.reload(true);
+        })
 
     }
 

@@ -1,0 +1,145 @@
+.class_container_game {
+    width: 100vw;
+    height: 100vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sect_game {
+    width: 75vw;
+    height: 75vh;
+}
+
+.top_game {
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+    .div_round {
+        flex: 3;
+        
+        font-size: 3.2rem;
+        font-weight: 400;
+        font-family: $game_titles;
+        letter-spacing: .4rem;
+        text-transform: uppercase;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        span {
+            display: block;
+            width: 4.2rem;
+            height: 4.2rem;
+            background-color: $yellow_color;
+            border-radius: 50%;
+            
+            line-height: 4.2rem;
+            text-align: center;
+            color: #000;
+            
+            margin: 1rem;
+        }
+    }
+    
+    ul {
+        flex: 1;
+        
+        list-style: none;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        
+        font-size: 1.2rem;
+        font-family: $game_content;
+        
+        li {
+            .span_points {
+                display: inline-block;
+                min-width: 6rem;
+                padding: .4rem;
+                border-bottom: .2rem solid $yellow_color;
+                text-align: center;
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+
+.the_game {
+    min-height: 70%;
+    margin: 4rem auto;
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    .div_throw {
+        flex: 2;
+        
+        font-size: 2rem;
+        font-family: $game_titles;
+        letter-spacing: .4rem;
+        text-transform: uppercase;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        .dice {
+            width: 8rem;
+            height: 8rem;
+            line-height: 8rem;
+            margin: 2rem;
+            
+            font-family: $game_content;
+            text-align: center;
+            font-size: 6rem;
+            color: $yellow_color;
+            
+            background-color: #010101;
+        }
+        
+        .sum {
+            font-family: $game_content;
+            font-size: 1.2rem;
+            margin: 1rem auto;
+        }
+    }
+    
+    .div_decision {
+        flex: 1;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        button {
+            margin: 2rem;
+        }
+        
+        div {
+            text-align: center;
+            font-family: $game_content;
+            padding: 1rem;
+            font-size: 1.2rem;
+            min-height: 7rem;
+            align-self: flex-end;
+        }
+        
+    }
+    
+}
+
+.div_next {
+    text-align: center;
+}

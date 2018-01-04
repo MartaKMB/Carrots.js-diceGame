@@ -16,6 +16,7 @@
 
     <main>
 
+        
         <div id="container_start">
 
             <section class="sect_log">
@@ -78,47 +79,66 @@
 
         </div>
 
-        
-        <span>*********************************************tu już ładnie nie jest - JESZCZE!***************************************************</span>
 
-        <div id="container_game">
+        <div id="container_game" class="class_container_game">
 
-            <div>runda: <span id="round"></span></div>
+            <section class="sect_game">
 
-            <div>pierwszy rzut</div>
-            
-            <div id="dice_1_1">?</div>
-            <div id="dice_2_1">?</div>
-            <div id="dice_3_1">?</div>
-            
-            <div id="sum_a"></div>
-            
-            <button id="bigger">Suma oczek wyrzuconych w kolejnej rundzie będzie WIĘKSZA od tej</button>
-            <button id="lower">Suma oczek wyrzuconych w kolejnej rundzie będzie MNIEJSZA od tej</button>
-            
-            
-            <div id="decision_msg"></div>
-            
-            <div>drugi rzut</div>
-            
-            <div id="dice_1_2">?</div>
-            <div id="dice_2_2">?</div>
-            <div id="dice_3_2">?</div>
-            
-            <div id="sum_b"></div>
+                <div class="top_game">
+                    <h3 class="div_round">runda: <span id="round">5</span></h3>
 
-            <button id="next_round">KOLEJNA RUNDA</button>
-            <br>
+                    <ul>
+                        <li>suma Twoich puktów <span id="player_points" class="span_points"> </span></li>
+                        <li>suma puktów komputera <span id="computer_points" class="span_points"> </span></li>
+                    </ul>
 
-            <div>suma puktów <span id="game_user_name"></span> <span id="player_points">___</span></div>
-            <div>suma puktów komputera <span id="computer_points">___</span></div>
-            <div>zwycięzca: <span id="winner">___</span></div>
+                </div>
+
+                <div class="the_game">
+
+                    <div class="div_throw">
+                        pierwszy rzut
+
+                        <div id="dice_1_1" class="dice"></div>
+                        <div id="dice_2_1" class="dice"></div>
+                        <div id="dice_3_1" class="dice"></div>
+
+                        <div id="sum_a" class="sum"></div>
+                    </div>
+
+                    <div class="div_decision">
+
+                        <button id="bigger" title="Suma oczek wyrzuconych w kolejnej rundzie będzie WIĘKSZA od tej" class="btn_decision"> &gt; </button>
+                        <button id="lower" title="Suma oczek wyrzuconych w kolejnej rundzie będzie MNIEJSZA od tej" class="btn_decision"> &lt;</button>
+
+                        <div id="decision_msg"></div>
+                    </div>
+
+                    <div class="div_throw">
+                        drugi rzut
+
+                        <div id="dice_1_2" class="dice"></div>
+                        <div id="dice_2_2" class="dice"></div>
+                        <div id="dice_3_2" class="dice"></div>
+
+                        <div id="sum_b" class="sum"></div>
+                    </div>
+
+                </div>
+                
+                <div class="div_next"><button id="next_round" class="button_round">KOLEJNA RUNDA</button></div>
+
+            </section>
+            
+            <div class="game_winner" id="msg_winner">zwycięzca: <span id="winner"> </span>
+            <button id="from_begining" class="from_begining_btn">chcę zagrać jeszcze raz</button>
+            </div>
         </div>
 
 
     </main>
 
-        <footer> app designed by: <a href="https://www.linkedin.com/in/marta-mucha-balcerek-99012113b/" target="_blank">Marta Mucha-Balcerek</a> &copy; 2017/2018 </footer>
+    <footer> app designed by: <a href="https://www.linkedin.com/in/marta-mucha-balcerek-99012113b/" target="_blank">Marta Mucha-Balcerek</a> &copy; 2017/2018 </footer>
 
     <script src="js/script.js"></script>
 </body>

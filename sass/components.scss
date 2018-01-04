@@ -1,8 +1,9 @@
-.start_buttons {
+.start_buttons, .button_round, .game_winner, .from_begining_btn {
     font-size: 2rem;
     font-family: $game_titles;
     letter-spacing: .2rem;
     text-transform: uppercase;
+    color: #010101;
 
     padding: 1.2rem;
     margin: 2.2rem;
@@ -10,11 +11,55 @@
     border-radius: 1rem;
     border: .2rem solid $yellow_color;
     background-color: inherit;
-
-    color: #010101;
+    
+    transition: all .6s ease;
 
     &:hover {
         background-color: $yellow_color;
         cursor: pointer;
     }
+}
+
+.btn_decision {
+    width: 8rem;
+    height: 8rem;
+    
+    font-size: 6rem;
+    font-family: $game_titles;
+    color: #010101;
+    
+    background-color: inherit;
+    border-radius: 50%;
+    border: .2rem solid $yellow_color;
+    
+    transition: all .6s ease;
+    
+    &:hover {
+        background-color: $yellow_color;
+        cursor: pointer;
+    }
+}
+
+.game_winner {
+    display: none;
+    
+    position: fixed;
+    top: 35%;
+    lefy: 35%;
+    
+    width: 30%;
+    padding: 2rem;
+    background-color: $grey_color;
+    
+    text-align: center;
+    color: #fefefe;
+    
+}
+
+.from_begining_btn {
+    display: block;
+    margin: 2rem auto;
+    
+    background-color: $yellow_color;
+    color: #010101;
 }
