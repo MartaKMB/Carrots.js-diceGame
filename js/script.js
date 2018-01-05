@@ -11,7 +11,6 @@
     const sectStart = document.querySelector('.sect_start');
 
     function scrollToNext(view) {
-
         view.scrollIntoView({
             behavior: 'smooth'
         });
@@ -20,7 +19,6 @@
     function showFirstPlayerAndGoToStartBtn() {
 
         let playerName = document.querySelector('#input_name').value;
-
         let drawedNum = Math.round(Math.random());
 
         if (playerName === '') {
@@ -42,17 +40,13 @@
     }
 
     inputName.addEventListener('keydown', (e) => {
-
         if (e.which === 13) {
             scrollToNext(sectWhoFirst);
         }
-
     });
 
     btnFirstPlayer.addEventListener('click', (e) => {
-
         showFirstPlayerAndGoToStartBtn();
-
     });
 
     /* game page view */
@@ -69,10 +63,10 @@
     const divSumA = document.querySelector('#sum_a');
     const divSumB = document.querySelector('#sum_b');
 
-    const spanPlayerPoints = document.querySelector('#player_points');
+    const spanUserPoints = document.querySelector('#player_points');
     const spanComputerPoints = document.querySelector('#computer_points');
     let computerPoints = 0;
-    let playerPoints = 0;
+    let userPoints = 0;
 
     const spanWinner = document.querySelector('#winner');
 
@@ -100,14 +94,12 @@
 
 
     function clearGameBoard(arrayToClear) {
-
         arrayToClear.forEach(element => element.innerHTML = '');
-
     }
 
     function showWinner() {
 
-        const playerPoints = parseInt(spanPlayerPoints.innerHTML);
+        const playerPoints = parseInt(spanUserPoints.innerHTML);
         const computerPoints = parseInt(spanComputerPoints.innerHTML);
 
         clearGameBoard(diceArray);
@@ -129,32 +121,23 @@
     }
 
     function generateRandomNumber() {
-
         let randomNr = Math.floor((Math.random() * 6) + 1);
         return randomNr;
-
     }
 
     function generateRandomDiceNumbers(round) {
-
         try {
-
             if (round == 1) {
-
                 divDice1_1.innerHTML = generateRandomNumber();
                 divDice2_1.innerHTML = generateRandomNumber();
                 divDice3_1.innerHTML = generateRandomNumber();
-
             } else if (round == 2) {
-
                 divDice1_2.innerHTML = generateRandomNumber();
                 divDice2_2.innerHTML = generateRandomNumber();
                 divDice3_2.innerHTML = generateRandomNumber();
-
             } else {
                 throw new Error('problem with generating random dice number');
             }
-
         } catch (e) {
             console.log(e.name + ' :' + e.message);
         }
@@ -165,7 +148,6 @@
     }
 
     function playComputerRound() {
-
         btnBigger.disabled = false;
         btnLower.disabled = false;
 
@@ -178,19 +160,27 @@
         divSumA.innerHTML = 'pierwszy rzut suma: ' + sumA;
 
         whoFirst = false;
-
     }
 
     function isBiggerOrLower() {
-
         return !!Math.round(Math.random());
-
+    }
+    
+    function msgAboutDecision(dedicatedMsg, decisionFlag) {
+        let decisionMsg;
+        if(decisionFlag === true) {
+            decisionMsg = 'WIĘKSZA';
+        } else {
+            decisionMsg = 'MNIEJSZA';
+        }
+        divDecisionMsg.innerHTML = dedicatedMsg + ', że suma oczek w kolejnym rzucie będzie ' + decisionMsg;
     }
 
-    function checkResultWithDecision(flagDecision, pointsCounterDecisionMaker, placeForShowingPointsDecisionMaker, stringMsg, pointsCounterThrowingPlayer, placeForShowingPointsThrowingPlayer) {
-
+    function countPoints(flagDecision, playerName) {
         /* flag_decision: false - next sum will be lower; true - next sum will be bigger */
-
+        
+        btnNext.disabled = false;
+        
         const sumA = sumDiceNumbers(divDice1_1.innerHTML, divDice2_1.innerHTML, divDice3_1.innerHTML);
 
         generateRandomDiceNumbers(2);
@@ -199,73 +189,51 @@
         divSumB.innerHTML = 'drugi rzut suma: ' + sumB;
 
         try {
-
-            if (flagDecision === true) {
-
-                divDecisionMsg.innerHTML = stringMsg + ', że suma oczek w kolejnym rzucie będzie WIĘKSZA';
-
-                if (sumB > sumA) {
-                    pointsCounterDecisionMaker++;
-                    placeForShowingPointsDecisionMaker.innerHTML = pointsCounterDecisionMaker;
-                } else if (sumB < sumA) {
-                    pointsCounterThrowingPlayer++;
-                    placeForShowingPointsThrowingPlayer.innerHTML = pointsCounterThrowingPlayer;
-                } else {
-                    console.log('może sumy są takie same?');
-                }
-            } else if (flagDecision === false) {
-                divDecisionMsg.innerHTML = stringMsg + ', że suma oczek w kolejnym rzucie będzie MNIEJSZA';
-
-                if (sumB < sumA) {
-                    pointsCounterDecisionMaker++;
-                    placeForShowingPointsDecisionMaker.innerHTML = pointsCounterDecisionMaker;
-                } else if (sumB > sumA) {
-                    pointsCounterThrowingPlayer++;
-                    placeForShowingPointsThrowingPlayer.innerHTML = pointsCounterThrowingPlayer;
-                } else {
-                    console.log('może sumy są takie same?');
-                }
-            } else {
-
-                throw new Error('problem with checking result with player decision - function checkResultWithDecision');
-            }
-
-        } catch (e) {
-            console.log(e.name + ' :' + e.message);
-        }
-
-    }
-
-    function countPoints(playerName, flagDecision) {
-
-        try {
+            
             if (playerName === 'COMPUTER') {
+                
+                msgAboutDecision('komputer obstawił', flagDecision);
 
-                checkResultWithDecision(flagDecision, computerPoints, spanComputerPoints, 'komputer obstawił', playerPoints, spanPlayerPoints);
+                if ((flagDecision === true && sumB > sumA) || (flagDecision === false && sumB < sumA)) {
+                    computerPoints++;
+                    spanComputerPoints.innerHTML = computerPoints;
+                } else if ((flagDecision === true && sumB < sumA) || (flagDecision === false && sumB > sumA)) {
+                    userPoints++;
+                    spanUserPoints.innerHTML = userPoints; 
+                } else {
+                    console.log('może sumy są takie same?');
+                }
 
+            } else if (playerName === 'USER') {
+                
+                msgAboutDecision('obstawiłaś/łeś', flagDecision);
 
-            } else if (playerName === 'PLAYER') {
-
-                checkResultWithDecision(flagDecision, playerPoints, spanPlayerPoints, 'obstawiłeś/łaś', computerPoints, spanComputerPoints);
+                if ((flagDecision === true && sumB > sumA) || (flagDecision === false && sumB < sumA)) {
+                        userPoints++;
+                        spanUserPoints.innerHTML = userPoints;    
+                    } else if ((flagDecision === true && sumB < sumA) || (flagDecision === false && sumB > sumA)) {
+                        computerPoints++;
+                        spanComputerPoints.innerHTML = computerPoints;
+                    } else {
+                        console.log('może sumy są takie same?');
+                    }
 
             } else {
+
                 throw new Error('problem with checking result with player decision - function countPoints');
             }
 
         } catch (e) {
-            console.log(e.name + ' :' + e.message);
+            console.log(e.name + ': ' + e.message);
         }
 
-        btnNext.disabled = false;
-    }
+    } 
 
     function showPlayerDecision(flagDecision) {
-
         btnBigger.disabled = true;
         btnLower.disabled = true;
 
-        countPoints('PLAYER', flagDecision);
-
+        countPoints(flagDecision, 'USER');
     }
 
     function showPlayerDecisionBigger() {
@@ -277,7 +245,6 @@
     }
 
     function playPlayerRound() {
-
         btnBigger.disabled = true;
         btnLower.disabled = true;
 
@@ -288,16 +255,15 @@
         divSumA.innerHTML = 'pierwszy rzut suma: ' + sumA;
 
         const computerDecision = isBiggerOrLower();
-
+        
         setTimeout(function () {
-            countPoints('COMPUTER', computerDecision);
+            countPoints(computerDecision, 'COMPUTER');
         }, 500);
 
         whoFirst = true;
     }
 
     function goToNextRound() {
-
         if (counter >= 5) {
             showWinner();
         } else {
@@ -312,18 +278,16 @@
                 playPlayerRound();
             }
         }
-
     }
 
     btnStart.addEventListener('click', (e) => {
-
         startView.setAttribute('class', 'invisible');
         gameView.style.display = 'flex';
 
         scrollToNext(gameView);
 
         spanRound.innerHTML = counter;
-        spanPlayerPoints.innerHTML = playerPoints;
+        spanUserPoints.innerHTML = userPoints;
         spanComputerPoints.innerHTML = computerPoints;
 
         if (spanFirstPlayer.innerHTML === 'komputer') {
@@ -333,7 +297,6 @@
         }
 
         btnStart.disabled = true;
-
     });
 
     btnBigger.addEventListener('click', showPlayerDecisionBigger);
@@ -361,6 +324,5 @@
             behavior: 'smooth'
         });
     });
-
 
 }());
