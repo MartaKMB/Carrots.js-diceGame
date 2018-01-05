@@ -15,7 +15,6 @@
         view.scrollIntoView({
             behavior: 'smooth'
         });
-
     }
 
     function showFirstPlayerAndGoToStartBtn() {
@@ -38,7 +37,7 @@
 
         setTimeout(function () {
             scrollToNext(sectStart);
-        }, 1600);
+        }, 1000);
 
     }
 
@@ -96,10 +95,6 @@
 
     const msgWinner = document.querySelector('#msg_winner');
     const btnFromBegining = document.querySelector('#from_begining');
-    
-    const anchorToRules = document.querySelector('#id_to_rules');
-    const ruleView = document.querySelector('#id_rules');
-    const arrowUp = document.querySelector('#arrow');
 
     const diceArray = [divDice1_1, divDice2_1, divDice3_1, divDice1_2, divDice2_2, divDice3_2, divSumA, divSumB, divDecisionMsg];
 
@@ -173,7 +168,7 @@
 
         btnBigger.disabled = false;
         btnLower.disabled = false;
-        
+
         btnNext.disabled = true;
 
         generateRandomDiceNumbers(1);
@@ -192,9 +187,9 @@
 
     }
 
-    function countPoints(playerName, flagDecision) {
+    function checkResultWithDecision(flagDecision, pointsCounterDecisionMaker, placeForShowingPointsDecisionMaker, stringMsg, pointsCounterThrowingPlayer, placeForShowingPointsThrowingPlayer) {
+
         /* flag_decision: false - next sum will be lower; true - next sum will be bigger */
-        btnNext.disabled = false;
 
         const sumA = sumDiceNumbers(divDice1_1.innerHTML, divDice2_1.innerHTML, divDice3_1.innerHTML);
 
@@ -203,71 +198,65 @@
         const sumB = sumDiceNumbers(divDice1_2.innerHTML, divDice2_2.innerHTML, divDice3_2.innerHTML);
         divSumB.innerHTML = 'drugi rzut suma: ' + sumB;
 
-        if (playerName === 'COMPUTER') {
+        try {
 
             if (flagDecision === true) {
-                
-                divDecisionMsg.innerHTML = 'komputer obstawił, że suma oczek w kolejnym rzucie będzie WIĘKSZA';
+
+                divDecisionMsg.innerHTML = stringMsg + ', że suma oczek w kolejnym rzucie będzie WIĘKSZA';
 
                 if (sumB > sumA) {
-                    computerPoints++;
-                    spanComputerPoints.innerHTML = computerPoints;
+                    pointsCounterDecisionMaker++;
+                    placeForShowingPointsDecisionMaker.innerHTML = pointsCounterDecisionMaker;
                 } else if (sumB < sumA) {
-                    playerPoints++;
-                    spanPlayerPoints.innerHTML = playerPoints;
+                    pointsCounterThrowingPlayer++;
+                    placeForShowingPointsThrowingPlayer.innerHTML = pointsCounterThrowingPlayer;
                 } else {
                     console.log('może sumy są takie same?');
                 }
             } else if (flagDecision === false) {
-                divDecisionMsg.innerHTML = 'komputer obstawił, że suma oczek w kolejnym rzucie będzie MNIEJSZA';
+                divDecisionMsg.innerHTML = stringMsg + ', że suma oczek w kolejnym rzucie będzie MNIEJSZA';
 
                 if (sumB < sumA) {
-                    computerPoints++;
-                    spanComputerPoints.innerHTML = computerPoints;
+                    pointsCounterDecisionMaker++;
+                    placeForShowingPointsDecisionMaker.innerHTML = pointsCounterDecisionMaker;
                 } else if (sumB > sumA) {
-                    playerPoints++;
-                    spanPlayerPoints.innerHTML = playerPoints;
+                    pointsCounterThrowingPlayer++;
+                    placeForShowingPointsThrowingPlayer.innerHTML = pointsCounterThrowingPlayer;
                 } else {
                     console.log('może sumy są takie same?');
                 }
             } else {
-                console.log('problem z podjęciem decyzji przez komputer | points');
+
+                throw new Error('problem with checking result with player decision - function checkResultWithDecision');
             }
 
-        } else if (playerName === 'PLAYER') {
-
-            if (flagDecision === true) {
-                divDecisionMsg.innerHTML = 'obstawiłeś/aś, że suma oczek w kolejnym rzucie będzie WIĘKSZA';
-
-                if (sumB > sumA) {
-                    playerPoints++;
-                    spanPlayerPoints.innerHTML = playerPoints;
-                } else if (sumB < sumA) {
-                    computerPoints++;
-                    spanComputerPoints.innerHTML = computerPoints;
-                } else {
-                    console.log('może sumy są takie same?');
-                }
-            } else if (flagDecision === false) {
-                divDecisionMsg.innerHTML = 'obstawiłeś/aś, że suma oczek w kolejnym rzucie będzie MNIEJSZA';
-
-                if (sumB < sumA) {
-                    playerPoints++;
-                    spanPlayerPoints.innerHTML = playerPoints;
-                } else if (sumB > sumA) {
-                    computerPoints++;
-                    spanComputerPoints.innerHTML = computerPoints;
-                } else {
-                    console.log('może sumy są takie same?');
-                }
-            } else {
-                console.log('problem z podjęciem decyzji przez gracza | function points');
-            }
-
-        } else {
-            console.log('problem z funkcją points');
+        } catch (e) {
+            console.log(e.name + ' :' + e.message);
         }
 
+    }
+
+    function countPoints(playerName, flagDecision) {
+
+        try {
+            if (playerName === 'COMPUTER') {
+
+                checkResultWithDecision(flagDecision, computerPoints, spanComputerPoints, 'komputer obstawił', playerPoints, spanPlayerPoints);
+
+
+            } else if (playerName === 'PLAYER') {
+
+                checkResultWithDecision(flagDecision, playerPoints, spanPlayerPoints, 'obstawiłeś/łaś', computerPoints, spanComputerPoints);
+
+            } else {
+                throw new Error('problem with checking result with player decision - function countPoints');
+            }
+
+        } catch (e) {
+            console.log(e.name + ' :' + e.message);
+        }
+
+        btnNext.disabled = false;
     }
 
     function showPlayerDecision(flagDecision) {
@@ -355,15 +344,17 @@
     btnFromBegining.addEventListener('click', (e) => {
         window.location.reload(true);
     })
-    
+
     /* game rules */
-    
+
+    const anchorToRules = document.querySelector('#id_to_rules');
+    const ruleView = document.querySelector('#id_rules');
+    const arrowUp = document.querySelector('#arrow');
+
     anchorToRules.addEventListener('click', (e) => {
-        ruleView.scrollIntoView({ 
-          behavior: 'smooth' 
-        });
+        scrollToNext(ruleView);
     });
-    
+
     arrowUp.addEventListener('click', (e) => {
         window.scroll({
             top: 0,
