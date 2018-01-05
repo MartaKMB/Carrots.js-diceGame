@@ -30,6 +30,8 @@
     justify-content: space-around;
     flex-wrap: wrap;
     
+    margin-bottom: 1rem;
+    
     .div_round {
         flex: 3;
         
@@ -123,6 +125,7 @@
             font-family: $game_content;
             font-size: 1.2rem;
             margin: 1rem auto;
+            min-height: 3rem;
         }
     }
     
