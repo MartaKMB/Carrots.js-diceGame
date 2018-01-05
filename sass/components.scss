@@ -85,3 +85,27 @@ button:disabled {
     border-color: #868379;
 //    cursor: not-allowed;
 }
+
+.btn_arrow {
+    color: $yellow_color;
+    width: 4rem;
+    height: 4rem;
+    margin: 2rem;
+    border: .2rem solid $yellow_color;
+    border-radius: 50%;
+    font-size: 3rem;
+    text-align: center;
+    text-shadow: 0 -1.5rem 0 $yellow_color, 0 -3rem 0 $yellow_color;
+    overflow: hidden;
+    transition: .8s ease;
+    
+    &:hover {
+        border-color: #101010;
+        background-color: #101010;
+        opacity: .8;
+    }
+    
+    .fa-angle-up {
+        animation: arrow 2s infinite linear;
+    }
+}

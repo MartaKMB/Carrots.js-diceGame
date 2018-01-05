@@ -13,6 +13,9 @@ a { text-decoration: none; color: inherit; }
   30% { background-image: url("../img/dices_gold_left.png"); }
   60% { background-image: url("../img/dices_gold_right.png"); }
   100% { background-image: url("../img/dices_gold.png"); } }
+@keyframes arrow { 0% { transform: translateY(8rem); }
+  50% { transform: translateY(0rem); }
+  100% { transform: translateY(-8rem); } }
 .start_buttons, .button_round, .game_winner, .from_begining_btn { font-size: 2rem; font-family: "Montserrat", sans-serif; letter-spacing: .2rem; text-transform: uppercase; color: #010101; padding: 1.2rem; margin: 2.2rem; border-radius: 1rem; border: 0.2rem solid #ffba00; background-color: inherit; transition: all .6s ease; }
 .start_buttons:hover, .button_round:hover, .game_winner:hover, .from_begining_btn:hover { background-color: #ffba00; cursor: pointer; }
 .start_buttons:disabled, .button_round:disabled, .game_winner:disabled, .from_begining_btn:disabled { cursor: none; }
@@ -29,6 +32,10 @@ a { text-decoration: none; color: inherit; }
 input:focus, button:focus { outline: none; }
 
 button:disabled { background-color: #b6b4af; color: #868379; border-color: #868379; }
+
+.btn_arrow { color: #ffba00; width: 4rem; height: 4rem; margin: 2rem; border: 0.2rem solid #ffba00; border-radius: 50%; font-size: 3rem; text-align: center; text-shadow: 0 -1.5rem 0 #ffba00, 0 -3rem 0 #ffba00; overflow: hidden; transition: .8s ease; }
+.btn_arrow:hover { border-color: #101010; background-color: #101010; opacity: .8; }
+.btn_arrow .fa-angle-up { animation: arrow 2s infinite linear; }
 
 header { width: 100vw; height: 5.5vh; position: fixed; top: 0; left: 0; display: flex; justify-content: space-around; align-items: center; background-color: rgba(50, 50, 50, 0.7); padding: .4rem; font-family: "Montserrat", sans-serif; color: #efefef; letter-spacing: .2rem; }
 header h1 { flex-basis: 1; font-size: 1.8rem; padding: .4rem; text-transform: uppercase; }
@@ -51,7 +58,7 @@ footer a:hover { color: #ffba00; }
 .div_who_first .first_player { font-size: 1.6rem; font-family: "Roboto", sans-serif; }
 .div_who_first .first_player span { display: inline-block; min-width: 6rem; padding: .4rem; text-transform: uppercase; border-bottom: 0.2rem solid #ffba00; }
 
-.div_game_rules { height: 75vh; width: 75vw; display: flex; flex-direction: column; justify-content: center; }
+.div_game_rules { height: 75vh; width: 75vw; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .div_game_rules h3 { text-align: center; margin: 1rem; font-size: 2.4rem; font-family: "Montserrat", sans-serif; letter-spacing: .4rem; text-transform: uppercase; padding-bottom: 1rem; border-bottom: 0.2rem solid #ffba00; }
 .div_game_rules ol { padding: 1rem; font-size: 1.4rem; font-family: "Roboto", sans-serif; list-style-position: inside; letter-spacing: .2rem; }
 .div_game_rules ol li { padding: .4rem; }

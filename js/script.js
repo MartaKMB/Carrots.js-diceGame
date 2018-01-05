@@ -96,6 +96,10 @@
 
     const msgWinner = document.querySelector('#msg_winner');
     const btnFromBegining = document.querySelector('#from_begining');
+    
+    const anchorToRules = document.querySelector('#id_to_rules');
+    const ruleView = document.querySelector('#id_rules');
+    const arrowUp = document.querySelector('#arrow');
 
     const diceArray = [divDice1_1, divDice2_1, divDice3_1, divDice1_2, divDice2_2, divDice3_2, divSumA, divSumB, divDecisionMsg];
 
@@ -351,6 +355,21 @@
     btnFromBegining.addEventListener('click', (e) => {
         window.location.reload(true);
     })
+    
+    /* game rules */
+    
+    anchorToRules.addEventListener('click', (e) => {
+        ruleView.scrollIntoView({ 
+          behavior: 'smooth' 
+        });
+    });
+    
+    arrowUp.addEventListener('click', (e) => {
+        window.scroll({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 
 
 }());
