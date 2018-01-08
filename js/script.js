@@ -3,6 +3,7 @@
     /* start page view */
 
     const inputName = document.querySelector('#input_name');
+    const btnConfirmName = document.querySelector('#confirm_input_name');
 
     const sectWhoFirst = document.querySelector('.sect_who_first');
     const btnFirstPlayer = document.querySelector('#btn_first_player');
@@ -33,7 +34,7 @@
 
         btnFirstPlayer.disabled = true;
 
-        setTimeout(function () {
+        setTimeout((e) => {
             scrollToNext(sectStart);
         }, 1000);
 
@@ -44,10 +45,12 @@
             scrollToNext(sectWhoFirst);
         }
     });
+    
+    btnConfirmName.addEventListener('click', (e) => {
+        scrollToNext(sectWhoFirst);
+    })
 
-    btnFirstPlayer.addEventListener('click', (e) => {
-        showFirstPlayerAndGoToStartBtn();
-    });
+    btnFirstPlayer.addEventListener('click', showFirstPlayerAndGoToStartBtn);
 
     /* game page view */
 
@@ -126,21 +129,16 @@
     }
 
     function generateRandomDiceNumbers(round) {
-        try {
-            if (round == 1) {
-                divDice1_1.innerHTML = generateRandomNumber();
-                divDice2_1.innerHTML = generateRandomNumber();
-                divDice3_1.innerHTML = generateRandomNumber();
-            } else if (round == 2) {
-                divDice1_2.innerHTML = generateRandomNumber();
-                divDice2_2.innerHTML = generateRandomNumber();
-                divDice3_2.innerHTML = generateRandomNumber();
-            } else {
-                throw new Error('problem with generating random dice number');
-            }
-        } catch (e) {
-            console.log(e.name + ' :' + e.message);
-        }
+        
+        if (round == 1) {
+            divDice1_1.innerHTML = generateRandomNumber();
+            divDice2_1.innerHTML = generateRandomNumber();
+            divDice3_1.innerHTML = generateRandomNumber();
+        } else if (round == 2) {
+            divDice1_2.innerHTML = generateRandomNumber();
+            divDice2_2.innerHTML = generateRandomNumber();
+            divDice3_2.innerHTML = generateRandomNumber();
+        } 
     }
 
     function sumDiceNumbers(a, b, c) {
@@ -256,7 +254,7 @@
 
         const computerDecision = isBiggerOrLower();
         
-        setTimeout(function () {
+        setTimeout((e) => {
             countPoints(computerDecision, 'COMPUTER');
         }, 500);
 

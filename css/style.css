@@ -20,6 +20,9 @@ a { text-decoration: none; color: inherit; }
 .start_buttons:hover, .button_round:hover, .game_winner:hover, .from_begining_btn:hover { background-color: #ffba00; cursor: pointer; }
 .start_buttons:disabled, .button_round:disabled, .game_winner:disabled, .from_begining_btn:disabled { cursor: none; }
 
+.btn_confirm { color: #ffba00; padding: .4rem; margin: 2rem .4rem; }
+.btn_confirm:hover { color: #fefefe; }
+
 .btn_decision { width: 8rem; height: 8rem; font-size: 6rem; font-family: "Montserrat", sans-serif; color: #010101; background-color: inherit; border-radius: 50%; border: 0.2rem solid #ffba00; transition: all .6s ease; }
 .btn_decision:hover { background-color: #ffba00; cursor: pointer; }
 .btn_decision:disabled { cursor: none; }
@@ -33,7 +36,7 @@ input:focus, button:focus { outline: none; }
 
 button:disabled { background-color: #b6b4af; color: #868379; border-color: #868379; }
 
-.btn_arrow { color: #ffba00; width: 4rem; height: 4rem; margin: 2rem; border: 0.2rem solid #ffba00; border-radius: 50%; font-size: 3rem; text-align: center; text-shadow: 0 -1.5rem 0 #ffba00, 0 -3rem 0 #ffba00; overflow: hidden; transition: .8s ease; }
+.btn_arrow { color: #ffba00; min-width: 4rem; width: 4rem; min-height: 4rem; height: 4rem; margin: 2rem; border: 0.2rem solid #ffba00; border-radius: 50%; font-size: 3rem; text-align: center; text-shadow: 0 -1.5rem 0 #ffba00, 0 -3rem 0 #ffba00; overflow: hidden; transition: .8s ease; }
 .btn_arrow:hover { border-color: #101010; background-color: #101010; opacity: .8; }
 .btn_arrow .fa-angle-up { animation: arrow 2s infinite linear; }
 
@@ -59,9 +62,12 @@ footer a:hover { color: #ffba00; }
 .div_who_first .first_player span { display: inline-block; min-width: 6rem; padding: .4rem; text-transform: uppercase; border-bottom: 0.2rem solid #ffba00; }
 
 .div_game_rules { height: 75vh; width: 75vw; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-.div_game_rules h3 { text-align: center; margin: 1rem; font-size: 2.4rem; font-family: "Montserrat", sans-serif; letter-spacing: .4rem; text-transform: uppercase; padding-bottom: 1rem; border-bottom: 0.2rem solid #ffba00; }
+.div_game_rules h3 { text-align: center; margin: 1rem; width: 60%; font-size: 2.4rem; font-family: "Montserrat", sans-serif; letter-spacing: .4rem; text-transform: uppercase; padding-bottom: 1rem; border-bottom: 0.2rem solid #ffba00; }
 .div_game_rules ol { padding: 1rem; font-size: 1.4rem; font-family: "Roboto", sans-serif; list-style-position: inside; letter-spacing: .2rem; }
 .div_game_rules ol li { padding: .4rem; }
+.div_game_rules .thank_you { margin: 1rem; font-size: 1rem; font-family: "Roboto", sans-serif; letter-spacing: .2rem; }
+.div_game_rules .thank_you a { font-weight: 600; padding: .1rem .4rem; }
+.div_game_rules .thank_you a:hover { background-color: #ffba00; }
 
 .class_container_game { width: 100vw; height: 100vh; display: none; flex-direction: column; justify-content: center; align-items: center; }
 

@@ -109,6 +109,7 @@
     h3 {
         text-align: center;
         margin: 1rem;
+        width: 60%;
         
         font-size: 2.4rem;
         font-family: $game_titles;
@@ -128,6 +129,22 @@
         
         li {
             padding: .4rem;
+        }
+    }
+    
+    .thank_you {
+        margin: 1rem;
+        font-size: 1rem;
+        font-family: $game_content;
+        letter-spacing: .2rem;
+        
+        a {
+            font-weight: 600;
+            padding: .1rem .4rem;
+            
+            &:hover {
+                background-color: $yellow_color;
+            }
         }
     }
 }

@@ -24,6 +24,16 @@
     }
 }
 
+.btn_confirm {
+    color: $yellow_color;
+    padding: .4rem;
+    margin: 2rem .4rem;
+    
+    &:hover {
+        color: #fefefe;
+    }
+}
+
 .btn_decision {
     width: 8rem;
     height: 8rem;
@@ -88,7 +98,9 @@ button:disabled {
 
 .btn_arrow {
     color: $yellow_color;
+    min-width: 4rem;
     width: 4rem;
+    min-height: 4rem;
     height: 4rem;
     margin: 2rem;
     border: .2rem solid $yellow_color;
